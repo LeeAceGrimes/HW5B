@@ -28,6 +28,17 @@ int bestDayIndex(vector<int> sales) { // returns the INDEX of the largest figure
 }
 //END - PROBLEM 2 BEST SALES DAY - END
 
+// BEGIN - PROBLEM 3 REGIONAL SALES - BEGIN
+int grandTotal(int totals[], int size) { // returns the sum of all region totals / days per region = 3
+    int total = 0;
+    for(int i = 0; i < size; i++) {
+        total += totals[i];
+    }
+   return total;
+
+}
+// END - PROBLEM 3 REGIONAL SALES - END
+
 
 // main -- process of arrays to vectors is challenging but they are very similar. Less manual work required.
 int main() {
@@ -35,10 +46,6 @@ int main() {
     //Problem 1
     int sale; // individual sale to be placed in vector sales
     vector<int> sales; // declaring vector sales
-
-    //Problem 2
-    int days;
-
 
     // BEGIN PROBLEM 1 DAILY SALES LOG - BEGIN
     cout << "Enter a daily sales figure (-1 to stop): ";
@@ -60,7 +67,9 @@ int main() {
 
     sales.clear(); // since both problems utilize the same vector name, I found that the function gives the wrong output outside of sample input. This clears the previous contents once problem 1 is finished.
 
-    
+    //Problem 2
+    int days;
+
     //BEGIN - PROBLEM 2 BEST SALES DAY - BEGIN
     cout << "Enter the number of days: "; // prompt user for days
     cin >> days;
@@ -81,8 +90,38 @@ int main() {
     cout << "Sales: " << sales[day] << " gold" << endl; //input sales vector sales[days] user input values stored in vector and recalled for output.
     //END - PROBLEM 2 BEST SALES DAY - END
 
+    sales.clear(); // clear sales for reuse in problem 3
 
+    //problem 3
+    int regions;
+    int regionTotalAR[100];
+    int regionalSale;
+    const int regionDays = 3;
 
+    //BEGIN - PROBLEM 3 REGIONAL SALES - BEGIN
+    cout << "Enter the number of regions: ";
+    cin >> regions;
+
+    cout << "--- Regional Sales ---" << endl;
+
+    for(int i = 0; i < regions; i++){
+        int regionTotal = 0;
+
+        for(int j = 0; j < regionDays; j++) {
+            cout << "Enter sales for region " << i + 1 << " " << "day " << j + 1 << ": ";
+            cin >> regionalSale;
+
+            regionTotal += regionalSale;   
+        }
+
+        regionTotalAR[i] = regionTotal;
+    
+        cout << "Region " << i + 1 << " total: " << regionTotal << endl;
+    }
+
+    cout << "Grand total: " << grandTotal(regionTotalAR, regions) << endl;
+    
+    //END - PROBLEM 3 REGIONAL SALES - END
 
 
     return 0;
