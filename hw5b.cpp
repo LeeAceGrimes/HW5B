@@ -71,9 +71,23 @@ vector<int> aboveThreshold(vector<int> sales, int threshold) { //similar to part
 }
 //END - PROBLEM 6 HIGH PERFORMERS - END
 
+
 //BEGIN - PROBLEM 7 DEBUGGING MORRIS'S STOCK TALLY - BEGIN
+// int sumVector(vector<int> v) {
+//     int total = 0
+//     for (int i = 0; i <= v.size(); i++) {
+//         total += v[i];
+//     }
+//     return total
+// }
 
-
+int sumVector(vector<int> v) {
+    int total = 0; // FIXED : added semicolon
+    for (size_t i = 0; i < v.size(); i++) { // FIXED chaned <= to <  for index reading, set i < size variable for vectors add .size() FIXED: added size_t to avoid int to size_t comparison
+        total += v[i]; // add value v at i to total
+    }
+    return total; // return new total
+}
 //END - PROBLEM 7 DEBUGGING MORRIS'S STOCK TALLY - END
 
 
@@ -263,6 +277,24 @@ int main() {
     //END - PROBLEM 6 HIGH PERFORMERS - END
 
     //BEGIN - PROBLEM 7 DEBUGGING MORRIS'S STOCK TALLY - BEGIN
+
+    // vector<int> nums;
+    // nums.push_back(10);
+    // nums.push_back(20)
+    // nums.push_back(30);
+    // cout << "Sum: " << sumVector(nums) << endl;
+
+    vector<int> nums;
+
+    nums.push_back(10);
+    nums.push_back(20); // FIXED: added semi colon to line
+    nums.push_back(30);
+
+    //header
+    cout << "--- Debug Report ---" << endl;
+    cout << "Sum: " << sumVector(nums) << endl;
+
+
 
 
     //END - PROBLEM 7 DEBUGGING MORRIS'S STOCK TALLY - END
