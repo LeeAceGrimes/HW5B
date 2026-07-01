@@ -46,9 +46,19 @@ string toUpperCase(string text) { // returns a copy of text with every lowercase
         }
     }    
     return text; // returns modified text.
-}
-    
+}   
 //END - PROBLEM 4 STORE ANNOUNCEMENT - END
+
+//BEGIN - PROBLEM 5 JOJA TERMINAL - BEGIN
+void printMenu() {
+    cout << "1. Spend on advertising (-100 gold)" << endl; // simple print out void function with all apropriate dialogue.
+    cout << "2. Restock shelves (-50 gold)" << endl;
+    cout << "3. Collect membership fees (+75 gold)" << endl;
+    cout << "4. Check budget" << endl;
+    cout << "5. Close terminal" << endl;
+}
+
+//END - PROBLEM 5 JOJA TERMINAL - END
 
 
 // main -- process of arrays to vectors is challenging but they are very similar. Less manual work required.
@@ -153,6 +163,58 @@ int main() {
     cout << "Announcement: " << modAnnouncements << endl; //modified announcement
     cout << "Length: " << announcement.length() << endl; // length of user input announcement
     //END - PROBLEM 4 STORE ANNOUNCEMENT - END
+
+    //BEGIN - PROBLEM 5 JOJA TERMINAL - BEGIN
+    // problem 3 variables
+    int budget;
+    int choice;
+
+    cout << "Enter the starting daily budget: "; // user prompt
+    cin >> budget; //stored in budget
+
+    cout << "--- Joja Terminal ---" << endl; // print header
+
+    do {
+    printMenu(); //prints menu options
+
+    cout << "Choose an option: "; // prompt user for selection
+    cin >> choice;
+
+    if(choice == 1) { // choice 1 advertising
+        if(budget >= 100) { // budget must be at least 100 gold to use.
+            budget -= 100; // subtract 100 gold from budget 
+            cout << "Spent 100 gold on advertising. Budget: " << budget << endl; 
+        }
+        else {
+            cout << "Not enough budget for advertising." << endl;
+        }
+    }
+    else if(choice == 2){ // choice 2 restocking
+        if(budget >= 50) { // budget must be greater than 50 to use
+            budget -= 50; // subtract 50 from the budget
+            cout << "Spent 50 gold restocking. Budget: " << budget << endl;
+        }
+        else {
+            cout << "Not enough budget for restocking." << endl;
+        }
+    }
+    else if(choice == 3) { //choice 3 membership
+        budget += 75; // add 75 to budget for collections
+        cout << "Collected 75 gold in membership fees. Budget: " << budget << " gold" << endl;
+    }
+    else if(choice == 4) { // current budget
+        cout << "Current budget: " << budget << endl;
+    }
+    else if(choice == 5) {
+        cout << "Closing the Joja terminal." << endl;
+    }
+    else{
+        cout << "Invalid option." << endl;
+    }
+    } while(choice != 5);
+
+    cout << "Final budget: " << budget << " gold" << endl;
+    //END - PROBLEM 5 JOJA TERMINAL - END
 
 
 
