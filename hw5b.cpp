@@ -34,10 +34,21 @@ int grandTotal(int totals[], int size) { // returns the sum of all region totals
     for(int i = 0; i < size; i++) {
         total += totals[i];
     }
-   return total;
-
+    return total;
 }
 // END - PROBLEM 3 REGIONAL SALES - END
+
+//BEGIN - PROBLEM 4 STORE ANNOUNCEMENT - BEGIN
+string toUpperCase(string text) { // returns a copy of text with every lowercase lettercase letter converted to uppercase.
+    for(size_t i = 0; i < text.length(); i++) { // reads array the length of the string text, to prevent warning flags from comparing int to string must use size_t instead of int
+        if( text[i] >= 'a' && text[i] <= 'z'){ // if text at position i is greater than or equal to the value of a and less than or equal to the value of z
+            text[i] = text[i] - 32; // text at i - 32 = uppercase ascii. Lower case and uppercase are seperated by the value 32
+        }
+    }    
+    return text; // returns modified text.
+}
+    
+//END - PROBLEM 4 STORE ANNOUNCEMENT - END
 
 
 // main -- process of arrays to vectors is challenging but they are very similar. Less manual work required.
@@ -120,8 +131,29 @@ int main() {
     }
 
     cout << "Grand total: " << grandTotal(regionTotalAR, regions) << endl;
-    
     //END - PROBLEM 3 REGIONAL SALES - END
+
+    //BEGIN - PROBLEM 4 STORE ANNOUNCEMENT - BEGIN
+    //variables
+    string announcement;
+    string modAnnouncements;
+
+    cin.ignore(1000, '\n'); // given command to clear input before getline.
+
+    cout << "Enter the store announcement: "; // user input prompt
+    getline(cin, announcement); // getline for announcement
+
+    modAnnouncements = toUpperCase(announcement); //modifed announcements is equal to the contents of announcement after being placed into the call function
+
+    //header
+    cout << "--- Store Announcement ---" << endl;
+
+    //out put formatted, all out put comes from the call function logic.
+    cout << "Original: " << announcement << endl; // original user input
+    cout << "Announcement: " << modAnnouncements << endl; //modified announcement
+    cout << "Length: " << announcement.length() << endl; // length of user input announcement
+    //END - PROBLEM 4 STORE ANNOUNCEMENT - END
+
 
 
     return 0;
