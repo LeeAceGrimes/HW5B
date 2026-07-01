@@ -57,8 +57,24 @@ void printMenu() {
     cout << "4. Check budget" << endl;
     cout << "5. Close terminal" << endl;
 }
-
 //END - PROBLEM 5 JOJA TERMINAL - END
+
+//BEGIN - PROBLEM 6 HIGH PERFORMERS - BEGIN
+vector<int> aboveThreshold(vector<int> sales, int threshold) { //similar to part 1 and 2 vector function
+    vector<int> result; // need to initialize additional vector to hold results
+    for(size_t i = 0; i < sales.size(); i++) { // scan through sales vector, size_t added because .size() does not return an integer but a value of size_t similar to problem 4
+        if(sales[i] > threshold){ // if sales at i is greater than threshold
+            result.push_back(sales[i]); // pushback sales[i] to result, 
+        }
+    }
+    return result;
+}
+//END - PROBLEM 6 HIGH PERFORMERS - END
+
+//BEGIN - PROBLEM 7 DEBUGGING MORRIS'S STOCK TALLY - BEGIN
+
+
+//END - PROBLEM 7 DEBUGGING MORRIS'S STOCK TALLY - END
 
 
 // main -- process of arrays to vectors is challenging but they are very similar. Less manual work required.
@@ -216,6 +232,40 @@ int main() {
     cout << "Final budget: " << budget << " gold" << endl;
     //END - PROBLEM 5 JOJA TERMINAL - END
 
+    //BEGIN - PROBLEM 6 HIGH PERFORMERS - BEGIN
+    //problem 5 variables
+    int saleCount;
+    int threshold = 100;
+    int productSales;
+
+    //vectors needed to filter vector
+    sales.clear(); // vector sales already exists, clear before using.
+    vector<int> highPerformers; //vector to store the high performers
+
+    cout << "Enter the number of products: "; // prompt for user input
+    cin >> saleCount; //store number of unique products sold 
+
+    for(int i = 1; i <= saleCount; i++) { // for loop to prompt user for input on each item's sale data stored in sale.
+        cout << "Enter sales for product " << i << ": ";
+        cin >> productSales;
+        sales.push_back(productSales); // add sale to sales vector (value amount per product)
+    }
+
+    highPerformers = aboveThreshold(sales, threshold); // set highPerformers vector equal to call function with parameters sales and threshold
+
+    cout << "--- High Performers ---" << endl; // header
+
+    for(size_t i = 0; i < highPerformers.size(); i++) { // for loop scan the contents of highPerformers
+        cout << highPerformers[i] << " gold" << endl; // cout highperformers at i, the value for a particular product. We are only tracking product sales that pass a threshold
+    }
+
+    cout << "Products above 100 gold: " << highPerformers.size() << endl; // cout the count of products that are above the threshold.
+    //END - PROBLEM 6 HIGH PERFORMERS - END
+
+    //BEGIN - PROBLEM 7 DEBUGGING MORRIS'S STOCK TALLY - BEGIN
+
+
+    //END - PROBLEM 7 DEBUGGING MORRIS'S STOCK TALLY - END
 
 
     return 0;
